@@ -11,13 +11,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Power Platform Tools
-        uses: microsoft/powerplatform-actions/actions-install@v1
+      - name: Install Power Platform CLI
+        run: |
+          Invoke-WebRequest -Uri https://aka.ms/PowerAppsCLI -OutFile PowerAppsCLI.msi
+          Start-Process msiexec.exe -ArgumentList '/i PowerAppsCLI.msi /quiet /norestart' -Wait
+          # Adding pac to the PATH so that it is recognized in future steps
+          $env:PATH += ";C:\Program Files (x86)\Microsoft PowerApps CLI\"
+        shell: pwsh
+
+      - name: Verify pac installation
+        run: |
+          pac --version
+        shell: pwsh
       
       - name: Run downloadFromSource.ps1
         shell: pwsh
         run: |
-          pac auth help
           .\pipelineScripts\downloadFromSource.ps1 -solutionName "Dataverse4TeamsDemo" -exportDirectory ".\demo\dataverse4TeamsDemo" -sourceEnv "1838fca4-6258-e6b8-a710-60838df81aa3" -unpackDirectory ".\demo\dataverse4TeamsDemo\unpacked"
      
       - name: Configure Git
