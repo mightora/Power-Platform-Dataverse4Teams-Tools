@@ -15,7 +15,9 @@ jobs:
         run: |
           nuget install Microsoft.PowerApps.CLI -OutputDirectory tools
           # Add the CLI path to the system PATH so it can be used in subsequent steps
-          $env:PATH += ";$(pwd)\tools\Microsoft.PowerApps.CLI\tools"
+          $pacPath = "$(pwd)\tools\Microsoft.PowerApps.CLI\tools"
+          Write-Host "Adding pac CLI to PATH: $pacPath"
+          $env:PATH += ";$pacPath"
         shell: pwsh
 
       - name: Verify pac installation
