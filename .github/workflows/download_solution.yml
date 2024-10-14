@@ -5,14 +5,11 @@ on:
 
 jobs:
   download-solution:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Set up PowerShell
-        uses: actions/setup-powershell@v2
 
       - name: Install Power Platform CLI
         run: |
