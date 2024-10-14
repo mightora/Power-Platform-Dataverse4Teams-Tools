@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="9.2.24094.196" SolutionPackageVersion="9.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.24094.196" OrganizationSchemaType="Core" CRMServerServiceabilityVersion="9.2.24094.00196">
+  <SolutionManifest>
+    <UniqueName>Dataverse4TeamsDemo</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Dataverse4Teams-Demo" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions />
+    <Version>1.0.0.0</Version>
+    <Managed>2</Managed>
+    <Publisher>
+      <UniqueName>TechTweedie</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="Tech Tweedie" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>techtwed</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>30488</CustomizationOptionValuePrefix>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="300" schemaName="crbf9_dataverse4teamtestapp_aee52" behavior="0" />
+    </RootComponents>
+    <MissingDependencies />
+  </SolutionManifest>
+</ImportExportXml>

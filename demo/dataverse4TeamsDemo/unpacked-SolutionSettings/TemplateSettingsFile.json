@@ -1,0 +1,17 @@
+{
+  "EnvironmentVariables": [
+    {
+      "SchemaName": "techtwed_test",
+      "Value": "",
+      "Name": {
+        "Default": "test",
+        "ByLcid": {
+          "1033": "test"
+        }
+      },
+      "TypeId": 100000000,
+      "IsRequired": false
+    }
+  ],
+  "ConnectionReferences": []
+}
