@@ -2,29 +2,22 @@
 
 This repository contains PowerShell scripts for exporting, unpacking, importing, and publishing Power Platform solutions.
 
-## Quick Start thith PAC Auth on Dataverse 4 Teams
+## Quick Start
 For a full step by step set of instructions see the blog post here:
 
-### Step 1: Environment ID
+### Environment ID
 1. Go to [https://admin.powerplatform.microsoft.com/environments](https://admin.powerplatform.microsoft.com/environments)
 2. Click on your Dataverse 4 Teams Environment
 3. Copy tour Environment ID
 ![step1](images/brave_dTvPerppTb.gif)
 
-### Step 2: Navigate to the Maker Portal
+### Navigate to the Maker Portal & Web API Endpoint
 1. Go to https://make.powerapps.com/environments/{copyed Environment ID}/home e.g. https://make.powerapps.com/environments/b50bfa1f-d077-e56f-aeaa-b9f92d3b79ad/home
 2. Click on **Developer resources**
 3. Copy your **Web API endpoint** e.g.https://orgef4d7f17.api.crm11.dynamics.com/
 ![step2](images/brave_6FKD0p5Svj.gif)
 
-### Step 3: Create connection
-1. Open up VSCode
-2. [Install Name: Power Platform Tools](https://marketplace.visualstudio.com/items?itemName=microsoft-IsvExpTools.powerplatform-vscode)
-3. Restat VSCode so PAC starts to work in the **Terminal** 
-4. Open up the Terminal by going to **Terminal > New Termainal**
-5. Run `pac auth create -env https://orgef4d7f17.api.crm11.dynamics.com/`
-![alt text](images/image.png)
-pac auth create -env b50bfa1f-d077-e56f-aeaa-b9f92d3b79ad -dc 
+
 ## Scripts
 
 ### Download From Source
@@ -110,7 +103,7 @@ To add this repository as a submodule to another repository:
 
 1. Navigate to the root directory of your target repository.
 2. Run the following command to add the submodule:
-    `git submodule add https://github.com/itweedie/PowerPaltform-Dataverse4Teams.git scripts/dataverse4Teams`
+    `git submodule add https://github.com/mightora/Power-Paltform-Dataverse4Teams-Tools.git scripts/dataverse4Teams`
 3. Initialize and update the submodule:
     `git submodule update --init --recursive`
 
@@ -125,7 +118,7 @@ Once the repository is added as a submodule, you can run the scripts from the su
 
 ### Release To Target
 ```powershell
-.\.scripts\dataverse4Teams\pipelineScripts\releaseToTarget.ps1 -solutionFilePath "path\to\your\solution.zip" -environmentName "YourEnvironmentName"
+.\scripts\dataverse4Teams\pipelineScripts\releaseToTarget.ps1 -solutionFilePath "path\to\your\solution.zip" -environmentName "YourEnvironmentName"
 ```
 
 ## Notes
