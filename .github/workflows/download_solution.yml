@@ -17,4 +17,20 @@ jobs:
       - name: Run downloadFromSource.ps1
         shell: pwsh
         run: |
+          pac auth help
           .\pipelineScripts\downloadFromSource.ps1 -solutionName "Dataverse4TeamsDemo" -exportDirectory ".\demo\dataverse4TeamsDemo" -sourceEnv "1838fca4-6258-e6b8-a710-60838df81aa3" -unpackDirectory ".\demo\dataverse4TeamsDemo\unpacked"
+     
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Check for changes
+        run: |
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Downloaded and unpacked solution changes"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
