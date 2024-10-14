@@ -10,13 +10,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Install Power Platform CLI
+          
+      - name: Install Power Platform CLI from NuGet
         run: |
-          Invoke-WebRequest -Uri https://aka.ms/PowerAppsCLI -OutFile PowerAppsCLI.msi
-          Start-Process msiexec.exe -ArgumentList '/i PowerAppsCLI.msi /quiet /norestart' -Wait
-          # Adding pac to the PATH so that it is recognized in future steps
-          $env:PATH += ";C:\Program Files (x86)\Microsoft PowerApps CLI\"
+          nuget install Microsoft.PowerApps.CLI -OutputDirectory tools
+          # Add the CLI path to the system PATH so it can be used in subsequent steps
+          $env:PATH += ";$(pwd)\tools\Microsoft.PowerApps.CLI\tools"
         shell: pwsh
 
       - name: Verify pac installation
