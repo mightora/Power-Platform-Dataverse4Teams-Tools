@@ -18,7 +18,19 @@ jobs:
           $pacPath = "$($pwd.Path)\tools\Microsoft.PowerApps.CLI\tools"
           Write-Host "Adding pac CLI to PATH: $pacPath"
           [System.Environment]::SetEnvironmentVariable('PATH', $env:PATH + ';' + $pacPath, [System.EnvironmentVariableTarget]::Process)
+        shell: pwsh
 
+      # Run pac CLI directly from full path
+      - name: Run PAC CLI with Full Path
+        run: |
+          .\tools\Microsoft.PowerApps.CLI\tools\pac.exe --version
+        shell: pwsh
+
+      # Optional: Debug to check if pac.exe is in PATH and check the PATH variable
+      - name: Debug PATH and PAC
+        run: |
+          echo $env:PATH
+          Get-ChildItem "$($pwd.Path)\tools\Microsoft.PowerApps.CLI\tools" | Where-Object { $_.Name -eq "pac.exe" }
         shell: pwsh
 
       - name: Verify pac installation
