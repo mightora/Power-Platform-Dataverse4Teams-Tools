@@ -95,7 +95,7 @@ You can add this repository as a submodule to your own repository to easily mana
 2. Run the following command:
     
     ```bash
-    git submodule add https://github.com/mightora/Power-Platform-Dataverse4Teams-Tools.git scripts/dataverse4Teams
+    git submodule add https://github.com/mightora/Power-Paltform-Dataverse4Teams-Tools.git pipelineScripts
     ```
     
 3. Initialize and update the submodule:
