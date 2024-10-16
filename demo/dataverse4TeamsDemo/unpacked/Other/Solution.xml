@@ -6,7 +6,7 @@
       <LocalizedName description="Dataverse4Teams-Demo" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.2</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>TechTweedie</UniqueName>
@@ -14,8 +14,10 @@
         <LocalizedName description="Tech Tweedie" languagecode="1033" />
       </LocalizedNames>
       <Descriptions />
-      <EMailAddress xsi:nil="true"></EMailAddress>
-      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <EMailAddress xsi:nil="true">
+      </EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true">
+      </SupportingWebsiteUrl>
       <CustomizationPrefix>techtwed</CustomizationPrefix>
       <CustomizationOptionValuePrefix>30488</CustomizationOptionValuePrefix>
     </Publisher>

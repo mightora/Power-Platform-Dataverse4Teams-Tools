@@ -21,6 +21,39 @@ catch {
     return
 }
 
+
+# Run the command and parse the JSON output
+$jsonOutput = pac solution list --json | ConvertFrom-Json
+
+# Find the solution using the SolutionUniqueName
+$solution = $jsonOutput | Where-Object { $_.SolutionUniqueName -eq $solutionName }
+
+# Get the current version number
+$currentVersion = $solution.VersionNumber
+
+# Split the version number into its components (Major, Minor, Build, Revision)
+$versionParts = $currentVersion -split "\."
+
+# Convert each part to integers to ensure proper arithmetic operations
+$major = [int]$versionParts[0]
+$minor = [int]$versionParts[1]
+$build = [int]$versionParts[2]
+$revision = [int]$versionParts[3]
+
+# Increment the Minor version by 1
+$revision += 1
+
+# Reconstruct the new version number
+$newVersion = "$major.$minor.$build.$revision"
+
+
+# update the version
+pac solution version --revisionversion $revision --solutionPath $unpackDirectory
+
+# Output the new version number
+Write-Output "The new version number for solution '$solutionName' is $newVersion"
+
+
 # Re-pack the solution name
 Write-Host "Repacking the solution..."
 $zipFilePath = Join-Path -Path $exportDirectory -ChildPath "repack\$solutionName.zip"
