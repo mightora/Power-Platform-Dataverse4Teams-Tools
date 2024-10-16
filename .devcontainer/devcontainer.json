@@ -1,0 +1,22 @@
+{
+    "name": "Dataverse Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/universal:2", // Includes common tools like Node.js, .NET, and PowerShell
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "mhutchie.git-graph",
+          "bierner.markdown-mermaid",
+          "danish-naglekar.power-platform-extension-pack"
+        ],
+        "settings": {
+          "terminal.integrated.defaultProfile.windows": "PowerShell"
+        }
+      }
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/azure-cli:1": {},
+      "ghcr.io/devcontainers/features/powershell:1": {},
+      "ghcr.io/devcontainers/features/dotnet:7": {}
+    }
+  }
+  
