@@ -21,17 +21,24 @@ catch {
     return
 }
 
-# Re-pack the solution
+# Re-pack the solution name
 Write-Host "Repacking the solution..."
-$zipFilePath = "$exportDirectory\$solutionName_repack.zip"
-pac solution pack --folder $unpackDirectory --zipFile $zipFilePath
-Write-Host "Solution repacked to: $zipFilePath"
+$zipFilePath = Join-Path -Path $exportDirectory -ChildPath "repack\$solutionName.zip"
 
 # Determine if the solution should be imported as managed or unmanaged
 if ($Managed) {
+
+    pac solution pack --folder $unpackDirectory --zipFile $zipFilePath --packagetype Managed
+    Write-Host "Solution repacked to: $zipFilePath"
+
     Write-Host "Preparing to import as a managed solution..."
     $importType = "--convert-to-managed"
+
 } else {
+    
+        pac solution pack --folder $unpackDirectory --zipFile $zipFilePath --packagetype Unmanaged
+    Write-Host "Solution repacked to: $zipFilePath"
+
     Write-Host "Preparing to import as an unmanaged solution..."
     $importType = ""
 }
@@ -43,11 +50,11 @@ Write-Host "Importing the solution to the target environment: $targetEnvironment
 if ([string]::IsNullOrWhiteSpace($environmentSettingsFile)) {
     # Run the import without the settings file
     Write-Host "No environment settings file provided, importing solution without settings file..."
-    pac solution import --path $zipFilePath --environment $targetEnvironment --async $importType
+    pac solution import --path $zipFilePath --environment $targetEnvironment --async $importType --publish-changes
 } else {
     # Run the import with the settings file
     Write-Host "Using environment settings file: $environmentSettingsFile"
-    pac solution import --path $zipFilePath --environment $targetEnvironment --settings-file $environmentSettingsFile --async $importType
+    pac solution import --path $zipFilePath --environment $targetEnvironment --settings-file $environmentSettingsFile --async $importType --publish-changes
 }
 
 Write-Host "Solution import process initiated."

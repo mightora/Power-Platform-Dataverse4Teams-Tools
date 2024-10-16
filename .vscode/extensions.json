@@ -1,7 +1,8 @@
 {
-    "recommendations": [
-      "mhutchie.git-graph",
-      "bierner.markdown-mermaid",
-      "danish-naglekar.power-platform-extension-pack"
-    ]
-  }
+  "recommendations": [
+    "mhutchie.git-graph",
+    "bierner.markdown-mermaid",
+    "danish-naglekar.power-platform-extension-pack",
+    "ms-vscode.PowerShell"
+  ]
+}
